@@ -1,0 +1,95 @@
+<!--components/productList.wxml-->
+
+<view class="productListWrap">
+  <van-toast id="van-toast" />
+
+  <van-row>
+    <van-col span="3" class='reflesh' bindtap='handleReflesh' custom-class='headerIconBtn'>
+      <view class="iconfont icon-shuaxin"></view>
+      <text>刷新</text>
+    </van-col>
+    <van-col span="18">
+      <van-search value="{{ searchValue }}" placeholder="请输入名称或描述" bind:search='handleSearch' />
+    </van-col>
+    <van-col span="3" bindtap='handleFilter' custom-class='headerIconBtn'>
+      <view class="iconfont icon-shaixuan"></view>
+      <text>筛选</text>
+    </van-col>
+  </van-row>
+  <van-popup show="{{ filterShow }}" bind:close="handleClose" position="right" custom-style='width:50%;height:100%;padding:20rpx 10rpx;'>
+    <view class="headTitle">筛选</view>
+    <view class="filterItemWrap">
+      <view class="title">发布类型</view>
+      <van-tag size="large" bindtap='handlePublishTypeChange' data-publishtype='0'
+       color="{{publishType==='0' ? '#008F3F' : '#7D7D7D'}}"  >全部</van-tag>
+      <van-tag size="large" bindtap='handlePublishTypeChange' data-publishtype='sell'
+       color="{{publishType==='sell' ? '#008F3F' : '#7D7D7D'}}"  >出售</van-tag>
+      <van-tag bindtap='handlePublishTypeChange' data-publishtype='buy'
+      size="large" color="{{publishType==='buy' ? '#008F3F' : '#7D7D7D'}}" >求购</van-tag>
+    </view>
+    <view class="filterItemWrap">
+      <view class="title">商品状态</view>
+      <van-tag size="large" bindtap='handleProductStatusChange' data-productstatus='0'
+        color="{{productStatus==='0' ? '#008F3F' : '#7D7D7D'}}"  >全部</van-tag>
+      <van-tag size="large" bindtap='handleProductStatusChange' data-productstatus='onSale'
+        color="{{productStatus==='onSale' ? '#008F3F' : '#7D7D7D'}}"  >在售</van-tag>
+      <van-tag bindtap='handleProductStatusChange' data-productstatus='soldOut'
+        size="large" color="{{productStatus==='soldOut' ? '#008F3F' : '#7D7D7D'}}" >已下架</van-tag>
+    </view>
+    <view class="filterItemWrap">
+      <view  class="title">校区</view>
+      <!-- 这个后面要改，要改成动态展现的 -->
+      <van-tag size="large" color="{{areaType==='0' ? '#008F3F' : '#7D7D7D'}}"
+        bindtap='handleAreaTypeChange' data-areatype='0'>全部</van-tag>
+      <van-tag size="large" color="{{areaType===item ? '#008F3F' : '#7D7D7D'}}"  wx:for='{{areas}}' wx:key='index'
+        bindtap='handleAreaTypeChange' data-areatype='{{item}}'>{{item}}</van-tag>
+    </view>
+    <view class="filterItemWrap">
+      <view class="title">价格区间</view>
+      <view class="inputWrap"> 
+        <input type="digit" maxlength='5' class="priceInput" placeholder="最低价" 
+        bindinput='handleMinPriceChange' value="{{minPrice}}"/>
+        <text> —— </text>
+        <input type="digit" maxlength='5' value="{{maxPrice}}" class="priceInput" placeholder="最高价" bindinput='handleMaxPriceChange'/> 
+      </view>
+    </view>
+    <van-goods-action custom-class='filterBottomBtn'>
+      <van-goods-action-button text="取消" color="linear-gradient(107deg,#BEBCBC, #7D7B7B)" bindclick='handleCancel' />
+      <van-goods-action-button text="确定" color="linear-gradient(107deg,#03B451, #013D1B)" bindclick='handleComfirm' />
+    </van-goods-action>
+  </van-popup>
+
+  <van-card
+    wx:for='{{productList}}'
+    wx:key='index'
+    custom-class='{{item.status === "onSale" ?  "" : "productCard"}} product'
+    price="{{item.price}}"
+    title="{{item.productName}}"
+    title-class='productTitle'
+    thumb="{{ item.productPicList[0] || '/images/noPic.png' }}"
+    thumb-mode='aspectFill'
+    lazy-load='true'
+    tag="{{item.publishType==='sell' ? '出售' : '求购'}}"
+    data-productid='{{item._id}}'
+    bindtap='navigateToDetail'
+  >
+    <view slot='desc' class="desc"> {{item.productDesc}} </view>
+    <view slot='num' class="school"> {{item.school + ' ' + item.area}} </view>
+    <view slot="footer">
+      <view wx:if='{{type === "myAllProduct"}}'>
+        <van-button data-productid='{{item._id}}' size="small" type="primary" custom-class='btns' plain catchtap="handleEdit" >编辑</van-button>
+        <van-button data-productid='{{item._id}}' size="small" type="primary" custom-class='btns' plain
+         catchtap="handleSoldOut" wx:if='{{item.status === "onSale"}}'>下架</van-button>
+        <van-button data-productid='{{item._id}}' size="small" type="primary" custom-class='btns' 
+        catchtap="handleOnSale" wx:else >上架</van-button>
+        <van-button data-productid='{{item._id}}' size="small" type="primary" custom-class='btns' plain catchtap="handleDelete">删除</van-button>
+      </view>
+      <view wx:else >
+        <van-button data-productid='{{item._id}}' size="small" type="primary" wx:if='{{ loveObj[item._id] }}' custom-class='btns' plain catchtap="handleCancelLove">取消收藏</van-button>
+        <van-button data-productid='{{item._id}}' size="small" type="primary" wx:else  custom-class='btns' catchtap="handleLove">收藏</van-button>
+      </view>
+    </view>
+  </van-card>
+  <view wx:if='{{!productList.length}}' class="noData">暂无数据</view>
+</view>
+

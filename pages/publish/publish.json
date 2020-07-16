@@ -1,0 +1,13 @@
+{
+  "usingComponents": {
+    "van-field": "@vant/weapp/field/index",
+    "van-cell-group": "@vant/weapp/cell-group/index",
+    "schoolPicker":"../../components/schoolPicker/schoolPicker",
+    "van-radio": "@vant/weapp/radio/index",
+    "van-radio-group": "@vant/weapp/radio-group/index",
+    "van-cell": "@vant/weapp/cell/index",
+    "van-picker": "@vant/weapp/picker/index",
+    "van-popup": "@vant/weapp/popup/index",
+    "van-uploader": "@vant/weapp/uploader/index"
+  }
+}

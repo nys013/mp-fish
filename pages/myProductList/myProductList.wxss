@@ -1,0 +1,3 @@
+.van-tag.van-tag--default.van-tag--large{
+  margin: 10rpx;
+}

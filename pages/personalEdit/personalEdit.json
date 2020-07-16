@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "van-field": "@vant/weapp/field/index",
+    "van-cell-group": "@vant/weapp/cell-group/index",
+    "van-switch": "@vant/weapp/switch/index",
+    "schoolPicker":"../../components/schoolPicker/schoolPicker"
+  },
+  "navigationBarTitleText": "个人信息编辑"
+}

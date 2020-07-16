@@ -1,0 +1,8 @@
+/* miniprogram/pages/personalEdit/personalEdit.wxss */
+.avatar{
+  display: block;
+  width: 240rpx;
+  height: 240rpx;
+  border-radius: 50%;
+  margin: 20rpx auto;
+}

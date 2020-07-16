@@ -1,0 +1,107 @@
+/* miniprogram/pages/productList/productList.wxss */
+/* 引入iconfont */
+@import '../../assets/iconfont/iconfont.wxss';
+
+
+.headerWrap{
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 99;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  background-color: white;
+  align-items: center;
+}
+.headerRight{
+  display: flex;
+  flex-basis: 210rpx;
+  justify-content: space-around;
+}
+.headerRight .filter , .headerLeft{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.headerTitle .searchInput{
+  width: 420rpx;
+  border: 1rpx solid #eee;
+  padding: 10rpx;
+}
+
+.productList{
+  /* height: 1040rpx; */
+  margin-top: 100rpx;
+}
+.productListWrap .headTitle{
+  width: 100%;
+  font-size: 40rpx;
+  background-color:#008F3F;
+  line-height: 90rpx;
+  text-align: center;
+  margin-bottom: 20rpx;
+  color: white;
+  font-weight: bold;
+}
+.productListWrap .school{
+  text-align: right;
+}
+.productListWrap .desc{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin: 10rpx 0;
+}
+.productListWrap .product{
+  border-bottom: 1rpx solid rgb(130, 127, 127);
+}
+
+.filterItemWrap{
+  margin: 10rpx 0;
+}
+.filterItemWrap .title{
+  width: 100%;
+  background-color: rgb(214, 213, 213);
+  text-align: center;
+  line-height: 60rpx;
+}
+
+.productListWrap .inputWrap{
+  margin-top: 20rpx;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.productListWrap .priceInput{
+  border: 1rpx solid rgb(143, 143, 143);
+  padding: 5rpx;
+  width: 100rpx;
+  height: 80rpx;
+}
+
+.productListWrap .noData{
+  line-height: 50rpx ;
+  text-align: center;
+  color: rgb(136, 136, 136);
+}
+.productListWrap .btns{
+  margin-right: 5rpx;
+  font-size: 24rpx;
+}
+.productListWrap .productCard{
+  background-image: url('https://6e79-nys-fish-1302119645.tcb.qcloud.la/static/soldOut.png?sign=87165884fc4f9bf522992e75d465eb91&t=1594373800');
+  background-repeat: no-repeat;
+  background-position: right top;
+  background-size: 120rpx 120rpx;
+}
+.productListWrap .productTitle {
+  font-size: 28rpx;
+}
+.headerIconBtn{
+  text-align: center;
+  margin-top: 10rpx;
+}
+.filterBottomBtn{
+  bottom: 10rpx!important;
+}

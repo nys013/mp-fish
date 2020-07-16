@@ -1,0 +1,82 @@
+/* miniprogram/pages/productDetail/productDetail.wxss */
+.produceDetailWrap{
+  padding: 20rpx;
+}
+.header{
+  height: 100rpx;
+  display: flex;
+  padding: 10rpx 0;
+  border-bottom: 1rpx solid rgb(143, 143, 143);
+}
+.avatar{
+  width: 100rpx;
+  height: 100rpx;
+  margin-right: 20rpx;
+}
+.text{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.nickName{
+  font-weight: 600;
+}
+.school{
+  font-size: 24rpx;
+  color: rgb(106, 105, 105);
+}
+.content{
+  margin: 20rpx 0;
+}
+.soldOut{
+  background-image: url('https://6e79-nys-fish-1302119645.tcb.qcloud.la/static/soldOut.png?sign=87165884fc4f9bf522992e75d465eb91&t=1594373800');
+  background-repeat: no-repeat;
+  background-position: right top;
+  background-size: 120rpx 120rpx;
+}
+.priceAndType{
+  margin-bottom: 5rpx;
+}
+.type{
+  background-color: rgb(240, 18, 18);
+  color: white;
+  font-size: 27rpx;
+  padding: 6rpx 10rpx;
+  font-weight: bold;
+}
+.price{
+  color: red;
+  font-weight: bold;
+  margin-right: 15rpx;
+}
+.title{
+  font-size: 34rpx;
+}
+.desc{
+  font-size: 32rpx;
+  color: rgb(37, 37, 37);
+}
+.imageWrap{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 100rpx;
+}
+.productImage{
+  width: 600rpx;
+  height: 400rpx;
+  border-radius: 20rpx;
+  margin-bottom: 10rpx;
+}
+.bigPicSwiper{
+  height: 100%;
+}
+page{
+  height: 100%;
+}
+.productBigImage{
+  width: 100%;
+}
+.love{
+  color: #FFE60C;
+}

@@ -1,0 +1,14 @@
+<!--components/schoolPicker/schoolPiker.wxml-->
+<view>
+  <van-cell title="*学校" is-link bind:click="showPopup" label="{{school + ' ' + area}}" />
+  <van-popup
+      show="{{ schoolShow }}"
+      position="bottom"
+      bind:close="closePopup"
+    >
+      <van-picker columns="{{ columns }}" show-toolbar title="学校"
+        bind:change="handleSchoolChange" 
+        bind:cancel="handleSchoolCancel"
+        bind:confirm="handleSchoolConfirm"/>
+  </van-popup>
+</view>

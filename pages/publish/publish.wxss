@@ -1,0 +1,11 @@
+/* miniprogram/pages/publish/publish.wxss */
+.radioWrap{
+  display: flex;
+  justify-content: space-around;
+}
+.van-uploader{
+  width: 100%;
+}
+.van-uploader__wrapper{
+  justify-content: center;
+}

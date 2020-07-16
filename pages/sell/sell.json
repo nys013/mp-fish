@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "sellOrBuyList":"../../components/sellOrBuyList/sellOrBuyList"
+  }
+}

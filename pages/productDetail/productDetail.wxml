@@ -1,0 +1,31 @@
+<!--miniprogram/pages/productDetail/productDetail.wxml-->
+<view class="produceDetailWrap">
+  <view class="header" bindtap="toPersonalDetail">
+    <image src='{{avatarUrl}}' class="avatar" mode="aspectFit"/>
+    <view class="text">
+      <text class="nickName">{{nickName}}</text>
+      <text class="school">{{school}} {{area}}</text>
+    </view>
+  </view>
+  <view class="content {{status==='soldOut' ? 'soldOut' : '' }} ">
+    <view class="priceAndType">
+      <text class="price">¥{{price}}</text>
+      <text class="type">{{publishType=='sell' ? '出售' : '求购' }}</text>
+    </view>
+    <view class="title">{{productName}}</view>
+    <text class="desc">{{productDesc}}</text>
+  </view>
+  <view class="imageWrap" >
+    <image wx:for='{{productPicList}}' wx:key='index' src="{{item}}" 
+    mode="aspectFill" class="productImage"
+    bindtap="handleBigPicShow" data-index='{{index}}'
+    />
+  </view>
+  <van-goods-action>
+    <van-goods-action-icon size="100rpx"  text="收藏" bind:click="handleSetLove"  wx:if='{{!isMyProduct}}'>
+      <van-icon name="star" size="35px" color="{{isMyLove && '#FFC322'}}" slot='icon' />
+    </van-goods-action-icon >
+    <van-goods-action-button  color="#7232dd" text="编辑" color="linear-gradient(107deg,#03B451, #013D1B)"
+     wx:else bindtap="toProductEdit" data-productId="{{productId}}"/>
+  </van-goods-action>
+</view>

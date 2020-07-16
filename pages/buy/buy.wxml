@@ -1,0 +1,4 @@
+<!--miniprogram/pages/buy/buy.wxml-->
+<view>
+  <sellOrBuyList type='buyProduct' />
+</view>

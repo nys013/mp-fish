@@ -1,0 +1,65 @@
+<!--miniprogram/pages/personalIndex/personalIndex.wxml-->
+<view>
+  <!-- 个人信息卡片 -->
+  <van-card
+    custom-class='personal'
+    thumb="{{ userInfo.avatarUrl }}"
+    title-class="title"
+  >
+  <view slot='title'>
+    <view class="title">{{userInfo.nickName}}</view>
+  </view>
+  <view slot='desc'>
+    <view class="desc">{{userInfo.profile}}</view>
+  </view>
+  <view slot="price" class="detail">
+    <view class="detail-item">手机号：{{userInfo.phoneOpen ? userInfo.phoneNum : '不公开'}} <copyText copyText='{{userInfo.phoneNum}}' wx:if='{{userInfo.phoneOpen}}' /></view>
+    <view class="detail-item">微信号：{{userInfo.wxOpen ? userInfo.wxNum : '不公开'}} <copyText copyText='{{userInfo.wxNum}}' wx:if='{{userInfo.wxOpen}}' /></view>
+    <view class="detail-item">{{userInfo.school}} {{userInfo.area}}</view>
+  </view>
+  </van-card>
+
+  <!-- 商品信息列表 -->
+  <!-- 出售 -->
+  <view class="productListTitle"><text class="productTitleText">出售列表</text></view>
+    <van-card
+    custom-class='product'
+    wx:for='{{sellList}}'
+    wx:key='index'
+    price="{{item.price}}"
+    title="{{item.productName}}"
+    title-class='productTitle'
+    thumb="{{ item.productPicList[0] || '/images/noPic.png' }}"
+    thumb-mode='aspectFill'
+    lazy-load='true'
+    tag="出售"
+    data-productid='{{item._id}}'
+    bindtap='navigateToDetail'
+  >
+    <view slot='desc' class="desc"> {{item.productDesc}} </view>
+    <view slot='num' class="school"> {{item.school + ' ' + item.area}} </view>
+  </van-card>
+  <view wx:if='{{!sellList.length}}' class="noData">暂无数据</view>
+
+  <!-- 求购 -->
+  <view class="productListTitle"><text class="productTitleText">求购列表</text></view>
+    <van-card
+    custom-class='product'
+    wx:for='{{buyList}}'
+    wx:key='index'
+    price="{{item.price}}"
+    title="{{item.productName}}"
+    title-class='productTitle'
+    thumb="{{ item.productPicList[0] || '/images/noPic.png' }}"
+    thumb-mode='aspectFill'
+    lazy-load='true'
+    tag="求购"
+    data-productid='{{item._id}}'
+    bindtap='navigateToDetail'
+  >
+    <view slot='desc' class="desc"> {{item.productDesc}} </view>
+    <view slot='num' class="school"> {{item.school + ' ' + item.area}} </view>
+  </van-card>
+  <view wx:if='{{!buyList.length}}' class="noData">暂无数据</view>
+
+</view>

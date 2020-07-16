@@ -1,0 +1,4 @@
+/* miniprogram/pages/buy/buy.wxss */
+.van-tag.van-tag--default.van-tag--large{
+  margin: 10rpx;
+}

@@ -1,0 +1,61 @@
+<!--miniprogram/pages/personalEdit/personalEdit.wxml-->
+<view>
+
+  <image src="{{avatarUrl}}" class="avatar" bindtap="uploadPic" mode='aspectFill'></image>
+
+  <van-cell-group>
+    <van-field
+      value="{{ nickName }}"
+      required
+      clearable
+      label="昵称"
+      placeholder="请输入昵称"
+      bind:change='handleNickNameChange'
+      maxlength='10'
+    />
+
+    <schoolPicker bind:school-pick='handelSchoolPick' />
+
+    <van-field
+      clearable
+      value="{{ phoneNum }}"
+      type="number"
+      label="手机号"
+      placeholder="请输入手机号"
+      error-message="{{phoneMsg}}"
+      bind:change='handlePhoneNumChange'
+      maxlength='13'
+    >
+      <van-switch slot='button' checked="{{ phoneOpen }}" bind:change="handlePhoneOpenChange" 
+        active-color="#008F3F" inactive-color="white"/>
+    </van-field>
+
+    <van-field
+      clearable
+      value="{{ wxNum }}"
+      maxlength='20'
+      label="微信号"
+      placeholder="请输入微信号"
+      error-message="{{wxMsg}}"
+      bind:change='handleWxeNumChange'
+    >
+      <van-switch slot='button' checked="{{ wxOpen }}" bind:change='handleWxOpenChange'
+        active-color="#008F3F" inactive-color="white"/>
+    </van-field>
+
+    <van-field
+      value="{{ profile }}"
+      required
+      clearable
+      label="简介"
+      placeholder="请输入简介"
+      type="textarea"
+      autosize
+      maxlength='50'
+      show-word-limit
+      bind:change='handleProfileChange'
+    />
+  </van-cell-group>
+
+  <button class="submitBtn" bindtap="submit" type="primary">提交</button>
+</view>

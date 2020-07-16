@@ -1,0 +1,50 @@
+<!--miniprogram/pages/publish/publish.wxml-->
+<van-cell-group>
+    <van-field
+      value="{{ productName }}"
+      required
+      clearable
+      label="商品名称"
+      placeholder="请输入商品名称"
+      maxlength='20'
+      show-word-limit
+      bind:change='handleProductNameChange'
+    />
+    <van-field
+      required
+      value="{{ price }}"
+      type="number"
+      label="价格"
+      placeholder="请输入价格"
+      bind:change='handlePriceChange'
+      maxlength='7'
+    />
+
+  <schoolPicker bind:school-pick='handleSchoolPick' class='schoolPicker'/>
+
+  <van-cell class='cell'>
+    <van-radio-group value="{{ publishType }}" class='radioWrap'>
+      <van-radio name="sell" checked-color="#008F3F"  bind:tap="handleRadioChange" data-type='sell'>发布闲置</van-radio>
+      <van-radio name="buy" checked-color="#008F3F"  bind:tap="handleRadioChange" data-type='buy'>求购闲置</van-radio>
+    </van-radio-group>
+  </van-cell>
+
+    <van-field
+      value="{{ productDesc }}"
+      clearable
+      label="简介"
+      placeholder="品牌、新旧程度、入手渠道..."
+      type="textarea"
+      autosize
+      maxlength='200'
+      show-word-limit
+      bind:change='handleProductDescChange'
+    />
+
+    <!-- 图片上传 -->
+    <van-uploader class='imageUpload' file-list="{{ fileList }}" image-fit='aspectFit' multiple
+    bind:after-read="headleAfterRead" max-count="3" bind:delete='handlePicDelete'/>
+
+    <button class="submitBtn" bindtap="submit" type="primary" disabled='{{disabled}}'>发布</button>
+</van-cell-group>
+

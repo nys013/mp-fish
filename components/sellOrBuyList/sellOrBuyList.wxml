@@ -1,0 +1,83 @@
+<!--components/productList.wxml-->
+
+<view class="productListWrap">
+  <view class='headerWrap'>
+    <view class="headerLeft" bindtap="handleReflesh">
+      <text class="iconfont icon-shuaxin"></text>
+      <text>刷新</text>
+    </view>
+    <view  class="headerTitle">
+      <input class="searchInput" value="{{ searchValue }}" placeholder="请输入名称或描述" confirm-type="search"
+      bindconfirm='handleSearch' />
+    </view>
+    <view class="headerRight">
+      <view>
+        <van-dropdown-menu>
+          <van-dropdown-item value="{{ rankType }}" options="{{ rankOptions }}" title='排序' bindchange='handleRankChange' />
+        </van-dropdown-menu>
+      </view>
+      <view class="filter" bindtap="handleFilter">
+        <text class="iconfont icon-shaixuan"></text>
+        <text>筛选</text>
+      </view>
+    </view>
+  </view>
+  <van-popup show="{{ filterShow }}" bind:close="handleClose" position="right" custom-style='width:50%;height:100%;padding:20rpx 10rpx;'>
+    <view class="headTitle">筛选</view>
+    <view class="filterItemWrap">
+      <view  class="title">校区</view>
+      <van-tag size="large" color="{{areaType==='0' ? '#008F3F' : '#7D7D7D'}}"
+      bindtap='handleAreaTypeChange' data-areatype='0'>全部</van-tag>
+      <van-tag size="large" color="{{areaType===item ? '#008F3F' : '#7D7D7D'}}"  wx:for='{{areas}}' wx:key='index'
+      bindtap='handleAreaTypeChange' data-areatype='{{item}}'>{{item}}</van-tag>
+    </view>
+    <view class="filterItemWrap">
+      <view  class="title">时间</view>
+      <van-tag size="large" color="{{publishTime==='0' ? '#008F3F' : '#7D7D7D'}}"
+      bindtap='handlePublishTimeChange' data-publishTime='0'>不限</van-tag>
+      <van-tag size="large" color="{{publishTime==='1' ? '#008F3F' : '#7D7D7D'}}"
+      bindtap='handlePublishTimeChange' data-publishTime='1'>1天内</van-tag>
+      <van-tag size="large" color="{{publishTime==='7' ? '#008F3F' : '#7D7D7D'}}"
+      bindtap='handlePublishTimeChange' data-publishTime='7'>7天内</van-tag>
+      <van-tag size="large" color="{{publishTime==='14' ? '#008F3F' : '#7D7D7D'}}"
+      bindtap='handlePublishTimeChange' data-publishTime='14'>14天内</van-tag>
+    </view>
+    <view class="filterItemWrap">
+      <view class="title">价格区间</view>
+      <view class="inputWrap"> 
+        <input type="digit" maxlength='5' class="priceInput" placeholder="最低价" 
+        bindinput='handleMinPriceChange' value="{{minPrice}}"/>
+        <text> —— </text>
+        <input type="digit" maxlength='5' value="{{maxPrice}}" class="priceInput" placeholder="最高价" bindinput='handleMaxPriceChange'/> 
+      </view>
+    </view>
+    <van-goods-action custom-class='filterBottomBtn'>
+      <van-goods-action-button text="取消" color="linear-gradient(107deg,#BEBCBC, #7D7B7B)" bindclick='handleCancel' />
+      <van-goods-action-button text="确定" color="linear-gradient(107deg,#03B451, #013D1B)" bindclick='handleComfirm' />
+    </van-goods-action>
+  </van-popup>
+
+  <scroll-view class="productList" bindscrolltolower='handleToBottom' scroll-y lower-threshold='3'
+  style='height:{{scrollViewHeight}}px;'> 
+    <van-card
+      wx:for='{{productList}}'
+      wx:key='index'
+      custom-class='product'
+      price="{{item.price}}"
+      title="{{item.productName}}"
+      title-class='productTitle'
+      thumb="{{ item.productPicList[0] || '/images/noPic.png' }}"
+      thumb-mode='aspectFill'
+      lazy-load='true'
+      tag="{{item.publishType==='sell' ? '出售' : '求购'}}"
+      data-productid='{{item._id}}'
+      bindtap='navigateToDetail'
+    >
+      <view slot='desc' class="desc"> {{item.productDesc}} </view>
+      <view slot='num' class="school"> {{item.school + ' ' + item.area}} </view>
+    </van-card>
+    <view wx:if='{{!productList.length}}' class="noData">暂无数据</view>
+    <view wx:if='{{noMoreData}}' class="noData">暂无更多数据</view>
+  </scroll-view>
+</view>
+

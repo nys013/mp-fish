@@ -1,0 +1,18 @@
+/* miniprogram/pages/productEdit/productEdit.wxss */
+.radioWrap{
+  display: flex;
+  justify-content: space-around;
+}
+.van-uploader{
+  width: 100%;
+}
+.van-uploader__wrapper{
+  justify-content: center;
+}
+.bottomBtns{
+  display: flex;
+  justify-content: space-around;
+}
+.btns{
+  flex-basis: 250rpx;
+}

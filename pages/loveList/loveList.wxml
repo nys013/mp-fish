@@ -1,0 +1,4 @@
+<!--miniprogram/pages/loveList/loveList.wxml-->
+<view>
+  <productList type='loveProduct'/>
+</view>

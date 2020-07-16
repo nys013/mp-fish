@@ -1,0 +1,30 @@
+/* miniprogram/pages/personal/personal.wxss */
+
+
+ .van-card__header{
+  position: relative;
+}
+ .van-card__thumb{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+.personalWrap .title{
+  font-size:40rpx ;
+  margin-bottom: 6rpx;
+  color: #008F3F;
+}
+.personalWrap .loginBtn{
+  margin: 20rpx;
+  line-height: 80rpx;
+}
+.personalWrap .desc{
+  color: black;
+  font-size: 26rpx;
+  margin: 10rpx 0;
+  overflow: hidden;
+}
+.personalWrap .open{
+  color: red;
+}

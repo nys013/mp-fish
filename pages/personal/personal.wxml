@@ -1,0 +1,31 @@
+<!--miniprogram/pages/personal/personal.wxml-->
+<view class="personalWrap">
+  <van-toast id="van-toast" />
+  <!-- 个人信息卡片 -->
+  <button wx:if='{{!login}}' class="loginBtn" type="primary" disabled='{{disabled}}'
+    open-type="getUserInfo" catchgetuserinfo="getUserInfo">登录</button>
+  <van-card
+    thumb="{{ avatarUrl }}"
+    title-class="title"
+    bindtap='toPersonalIndex'
+  >
+  <view slot='title' wx:if='{{login}}'>
+    <view class="title">{{nickName}}</view>
+  </view>
+  <view slot='desc' wx:if='{{login}}'>
+    <view class="desc">{{profile}}</view>
+  </view>
+  <view slot="price" class="detail" wx:if='{{login}}'>
+    <view class="detail-item">手机号：{{phoneNum}} <copyText copyText='{{phoneNum}}' /> <text class="open" wx:if='{{!phoneOpen}}'> 不公开</text></view>
+    <view class="detail-item">微信号：{{wxNum}} <copyText copyText='{{wxNum}}' /> <text class="open" wx:if='{{!wxOpen}}'> 不公开</text></view>
+    <view class="detail-item">{{school}} {{area}}</view>
+  </view>
+  </van-card>
+
+  <!--  -->
+  <van-cell-group>
+    <van-cell title="个人信息" is-link value="编辑" url="/pages/personalEdit/personalEdit" size='large' />
+    <van-cell title="发布列表" is-link value="查看" url="/pages/myProductList/myProductList" size='large' />
+    <van-cell title="收藏列表" is-link value="查看" url="/pages/loveList/loveList" size='large' />
+  </van-cell-group>
+</view>

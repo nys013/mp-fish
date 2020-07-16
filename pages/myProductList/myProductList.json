@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "productList":"../../components/productList/productList"
+  },
+  "navigationBarTitleText": "发布列表"
+}
